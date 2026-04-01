@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Universal Karavan</title>
 
   <style>
@@ -10,49 +10,35 @@
       box-sizing: border-box;
     }
 
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
       font-family: Arial, sans-serif;
       background: #0b0f14;
     }
 
-    body {
-      overflow: hidden;
-    }
-
+    /* ===== HERO ===== */
     .hero {
       position: relative;
       width: 100%;
       height: 100svh;
-      min-height: 100svh;
-      background: url('arkaplan.png') no-repeat center center / cover;
-      overflow: hidden;
+      background: url('desktop.png') no-repeat center center/cover;
     }
 
+    /* Overlay */
     .overlay {
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(
-          to top,
-          rgba(5, 8, 12, 0.82) 0%,
-          rgba(5, 8, 12, 0.45) 35%,
-          rgba(5, 8, 12, 0.18) 60%,
-          rgba(5, 8, 12, 0.10) 100%
-        );
-      z-index: 1;
+      background: rgba(0,0,0,0.35);
     }
 
+    /* ===== BUTON PANEL ===== */
     .buttons-wrap {
       position: absolute;
       left: 50%;
-      bottom: 28px;
+      bottom: 30px;
       transform: translateX(-50%);
-      width: calc(100% - 32px);
-      max-width: 620px;
+      width: calc(100% - 40px);
+      max-width: 600px;
       z-index: 3;
     }
 
@@ -60,101 +46,51 @@
       display: flex;
       gap: 12px;
       padding: 12px;
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.10);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      box-shadow:
-        0 18px 50px rgba(0, 0, 0, 0.35),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      border-radius: 22px;
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.15);
     }
 
+    /* ===== BUTON ===== */
     .btn {
       flex: 1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 58px;
-      padding: 16px 20px;
-      border-radius: 18px;
+      text-align: center;
+      padding: 16px;
+      border-radius: 16px;
       text-decoration: none;
       font-size: 17px;
-      font-weight: 700;
-      letter-spacing: 0.2px;
-      transition: transform 0.25s ease, opacity 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+      font-weight: bold;
+      color: white;
+      transition: 0.3s;
     }
 
     .btn:hover {
-      transform: translateY(-2px);
+      transform: scale(1.05);
     }
 
-    .btn:active {
-      transform: translateY(0);
-    }
-
+    /* WhatsApp */
     .whatsapp {
-      background: linear-gradient(180deg, #2ddb73 0%, #25d366 100%);
-      color: #ffffff;
+      background: #25D366;
     }
 
-    .whatsapp:hover {
-      box-shadow: 0 14px 36px rgba(37, 211, 102, 0.28);
-    }
-
+    /* Ara */
     .call {
-      background: linear-gradient(180deg, #d52231 0%, #c1121f 100%);
-      color: #ffffff;
+      background: #C1121F;
     }
 
-    .call:hover {
-      box-shadow: 0 14px 36px rgba(193, 18, 31, 0.30);
-    }
-
-    .icon {
-      margin-right: 10px;
-      font-size: 18px;
-      line-height: 1;
-    }
-
+    /* ===== ALT YAZI ===== */
     .bottom-note {
-      margin-top: 10px;
       text-align: center;
+      margin-top: 8px;
       font-size: 12px;
-      color: rgba(255, 255, 255, 0.70);
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+      color: rgba(255,255,255,0.7);
     }
 
-    /* Tablet */
+    /* ===== MOBİL GÖRSEL ===== */
     @media (max-width: 768px) {
       .hero {
-        background-position: center center;
-      }
-
-      .buttons-wrap {
-        width: calc(100% - 24px);
-        bottom: 18px;
-      }
-
-      .buttons-panel {
-        gap: 10px;
-        padding: 10px;
-        border-radius: 22px;
-      }
-
-      .btn {
-        min-height: 54px;
-        font-size: 16px;
-        border-radius: 16px;
-        padding: 14px 16px;
-      }
-    }
-
-    /* Telefon */
-    @media (max-width: 560px) {
-      .hero {
-        background-position: 62% center;
+        background: url('mobile.png') no-repeat center center/cover;
       }
 
       .buttons-panel {
@@ -162,73 +98,36 @@
       }
 
       .btn {
-        width: 100%;
-        min-height: 52px;
         font-size: 16px;
-      }
-
-      .bottom-note {
-        font-size: 11px;
+        padding: 14px;
       }
     }
 
-    /* Küçük telefon */
-    @media (max-width: 390px) {
-      .buttons-wrap {
-        width: calc(100% - 18px);
-        bottom: 14px;
-      }
-
-      .buttons-panel {
-        padding: 9px;
-        border-radius: 20px;
-      }
-
-      .btn {
-        min-height: 50px;
-        font-size: 15px;
-        padding: 13px 14px;
-      }
-
-      .icon {
-        margin-right: 8px;
-        font-size: 16px;
-      }
-    }
-
-    /* Kısa ekranlar */
-    @media (max-height: 700px) {
-      .buttons-wrap {
-        bottom: 12px;
-      }
-
-      .btn {
-        min-height: 50px;
-      }
-    }
   </style>
 </head>
+
 <body>
 
   <div class="hero">
 
     <div class="buttons-wrap">
       <div class="buttons-panel">
+
         <a class="btn whatsapp" href="https://wa.me/905325664290" target="_blank">
-          <span class="icon">💬</span>
           WhatsApp
         </a>
 
         <a class="btn call" href="tel:+905325664290">
-          <span class="icon">📞</span>
           Ara
         </a>
+
       </div>
 
       <div class="bottom-note">
         Universal Karavan • Çok yakında yayında
       </div>
     </div>
+
   </div>
 
 </body>
