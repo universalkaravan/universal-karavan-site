@@ -1,119 +1,235 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Universal Karavan</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Universal Karavan</title>
 
-<style>
-body {
-  margin: 0;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-/* Arka plan */
-.hero {
-  width: 100%;
-  height: 100vh;
-  background: url('arkaplan.png') no-repeat center center/cover;
-  position: relative;
-}
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: #0b0f14;
+    }
 
-/* Overlay */
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.35);
-}
+    body {
+      overflow: hidden;
+    }
 
-/* Butonlar */
-.buttons {
-  position: absolute;
-  bottom: 60px;
-  left: 60px;
-  display: flex;
-  gap: 15px;
-  z-index: 2;
-}
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100svh;
+      min-height: 100svh;
+      background: url('arkaplan.png') no-repeat center center / cover;
+      overflow: hidden;
+    }
 
-/* Buton stil */
-.btn {
-  padding: 16px 28px;
-  border-radius: 14px;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: bold;
-  transition: 0.3s;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to top,
+          rgba(5, 8, 12, 0.82) 0%,
+          rgba(5, 8, 12, 0.45) 35%,
+          rgba(5, 8, 12, 0.18) 60%,
+          rgba(5, 8, 12, 0.10) 100%
+        );
+      z-index: 1;
+    }
 
-/* WhatsApp */
-.whatsapp {
-  background: #25D366;
-  color: white;
-}
+    .buttons-wrap {
+      position: absolute;
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%);
+      width: calc(100% - 32px);
+      max-width: 620px;
+      z-index: 3;
+    }
 
-/* Ara */
-.call {
-  background: #C1121F;
-  color: white;
-}
+    .buttons-panel {
+      display: flex;
+      gap: 12px;
+      padding: 12px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
 
-/* Hover */
-.btn:hover {
-  transform: scale(1.05);
-}
+    .btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 58px;
+      padding: 16px 20px;
+      border-radius: 18px;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      transition: transform 0.25s ease, opacity 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    }
 
-/* 🔥 MOBİL AYARLAR */
-@media (max-width: 768px) {
+    .btn:hover {
+      transform: translateY(-2px);
+    }
 
-  .hero {
-    height: 100vh;
-    background-position: center;
-  }
+    .btn:active {
+      transform: translateY(0);
+    }
 
-  .buttons {
-    left: 20px;
-    right: 20px;
-    bottom: 20px;
-    flex-direction: column;
-    gap: 12px;
-  }
+    .whatsapp {
+      background: linear-gradient(180deg, #2ddb73 0%, #25d366 100%);
+      color: #ffffff;
+    }
 
-  .btn {
-    width: 100%;
-    text-align: center;
-    font-size: 16px;
-    padding: 14px;
-  }
+    .whatsapp:hover {
+      box-shadow: 0 14px 36px rgba(37, 211, 102, 0.28);
+    }
 
-}
+    .call {
+      background: linear-gradient(180deg, #d52231 0%, #c1121f 100%);
+      color: #ffffff;
+    }
 
-/* 🔥 KÜÇÜK TELEFONLAR */
-@media (max-width: 480px) {
+    .call:hover {
+      box-shadow: 0 14px 36px rgba(193, 18, 31, 0.30);
+    }
 
-  .btn {
-    font-size: 15px;
-    padding: 12px;
-  }
+    .icon {
+      margin-right: 10px;
+      font-size: 18px;
+      line-height: 1;
+    }
 
-}
-</style>
+    .bottom-note {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.70);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    }
 
+    /* Tablet */
+    @media (max-width: 768px) {
+      .hero {
+        background-position: center center;
+      }
+
+      .buttons-wrap {
+        width: calc(100% - 24px);
+        bottom: 18px;
+      }
+
+      .buttons-panel {
+        gap: 10px;
+        padding: 10px;
+        border-radius: 22px;
+      }
+
+      .btn {
+        min-height: 54px;
+        font-size: 16px;
+        border-radius: 16px;
+        padding: 14px 16px;
+      }
+    }
+
+    /* Telefon */
+    @media (max-width: 560px) {
+      .hero {
+        background-position: 62% center;
+      }
+
+      .buttons-panel {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        min-height: 52px;
+        font-size: 16px;
+      }
+
+      .bottom-note {
+        font-size: 11px;
+      }
+    }
+
+    /* Küçük telefon */
+    @media (max-width: 390px) {
+      .buttons-wrap {
+        width: calc(100% - 18px);
+        bottom: 14px;
+      }
+
+      .buttons-panel {
+        padding: 9px;
+        border-radius: 20px;
+      }
+
+      .btn {
+        min-height: 50px;
+        font-size: 15px;
+        padding: 13px 14px;
+      }
+
+      .icon {
+        margin-right: 8px;
+        font-size: 16px;
+      }
+    }
+
+    /* Kısa ekranlar */
+    @media (max-height: 700px) {
+      .buttons-wrap {
+        bottom: 12px;
+      }
+
+      .btn {
+        min-height: 50px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<div class="hero">
+  <div class="hero">
 
-  <div class="buttons">
-    <a class="btn whatsapp" href="https://wa.me/905325664290" target="_blank">
-      WhatsApp
-    </a>
+    <div class="buttons-wrap">
+      <div class="buttons-panel">
+        <a class="btn whatsapp" href="https://wa.me/905325664290" target="_blank">
+          <span class="icon">💬</span>
+          WhatsApp
+        </a>
 
-    <a class="btn call" href="tel:+905325664290">
-      Ara
-    </a>
+        <a class="btn call" href="tel:+905325664290">
+          <span class="icon">📞</span>
+          Ara
+        </a>
+      </div>
+
+      <div class="bottom-note">
+        Universal Karavan • Çok yakında yayında
+      </div>
+    </div>
   </div>
-</div>
 
 </body>
 </html>
