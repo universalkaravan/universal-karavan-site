@@ -18,14 +18,14 @@ body {
   position: relative;
 }
 
-/* Overlay (isteğe bağlı) */
+/* Overlay */
 .overlay {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.35);
 }
 
-/* Buton container */
+/* Butonlar */
 .buttons {
   position: absolute;
   bottom: 60px;
@@ -35,7 +35,7 @@ body {
   z-index: 2;
 }
 
-/* Ortak buton stil */
+/* Buton stil */
 .btn {
   padding: 16px 28px;
   border-radius: 14px;
@@ -52,34 +52,50 @@ body {
   color: white;
 }
 
-.whatsapp:hover {
-  background: #1ebe5d;
-  transform: scale(1.05);
-}
-
 /* Ara */
 .call {
   background: #C1121F;
   color: white;
 }
 
-.call:hover {
-  background: #e63946;
+/* Hover */
+.btn:hover {
   transform: scale(1.05);
 }
 
-/* Mobil */
+/* 🔥 MOBİL AYARLAR */
 @media (max-width: 768px) {
+
+  .hero {
+    height: 100vh;
+    background-position: center;
+  }
+
   .buttons {
     left: 20px;
     right: 20px;
-    bottom: 30px;
+    bottom: 20px;
     flex-direction: column;
+    gap: 12px;
   }
 
   .btn {
+    width: 100%;
     text-align: center;
+    font-size: 16px;
+    padding: 14px;
   }
+
+}
+
+/* 🔥 KÜÇÜK TELEFONLAR */
+@media (max-width: 480px) {
+
+  .btn {
+    font-size: 15px;
+    padding: 12px;
+  }
+
 }
 </style>
 
